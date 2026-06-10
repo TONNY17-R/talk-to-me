@@ -10,6 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
 from flask_caching import Cache
+from sqlalchemy.exc import SQLAlchemyError
 import logging
 from logging.handlers import RotatingFileHandler
 import os
@@ -65,9 +66,16 @@ def create_app(config_name='development'):
     # CLI commands
     register_cli_commands(app)
     
-    # Create tables
+    # Create tables when the database is reachable.
+    # On Render, a misconfigured or unreachable DB host should not prevent the app
+    # from starting so the health endpoint and fallback behavior remain available.
     with app.app_context():
-        db.create_all()
+        try:
+            db.create_all()
+            app.config['DB_AVAILABLE'] = True
+        except SQLAlchemyError as exc:
+            app.config['DB_AVAILABLE'] = False
+            app.logger.warning('Database initialization skipped: %s', exc)
     
     return app
 
