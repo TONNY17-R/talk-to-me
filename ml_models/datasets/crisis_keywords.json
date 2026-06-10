@@ -1,0 +1,33 @@
+{
+  "crisis_keywords": {
+    "critical": [
+      "suicide",
+      "self-harm",
+      "kill myself",
+      "end my life",
+      "jump",
+      "overdose"
+    ],
+    "high": [
+      "hurt myself",
+      "cutting",
+      "self-injury",
+      "dying",
+      "not worth living"
+    ],
+    "medium": [
+      "depressed",
+      "hopeless",
+      "worthless",
+      "can't take it",
+      "give up"
+    ]
+  },
+  "positive_indicators": [
+    "feeling better",
+    "hopeful",
+    "improved",
+    "support",
+    "progress"
+  ]
+}

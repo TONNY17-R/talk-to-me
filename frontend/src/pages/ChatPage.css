@@ -1,0 +1,21 @@
+.chat-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  height: calc(100vh - 180px);
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-page h1 {
+  text-align: center;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .chat-page {
+    padding: var(--spacing-md);
+    height: calc(100vh - 240px);
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Talk to Me",
+  "short_name": "Talk2Me",
+  "description": "Mental health support platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea"
+}
