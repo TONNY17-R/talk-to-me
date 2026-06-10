@@ -4,3 +4,4 @@
 # the TensorFlow/PyTorch install failures on the default Python runtime.
 
 -r requirements_minimal.txt
+Flask-JWT-Extended==4.5.2
