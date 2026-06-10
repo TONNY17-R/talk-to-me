@@ -13,7 +13,7 @@ class Config:
     
     # Database
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'mysql+pymysql://root:Hallelujah%401@localhost/talk_to_me'
+        'mysql+pymysql://root:password@localhost/talk_to_me'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Redis
@@ -50,7 +50,7 @@ class Config:
     EMERGENCY_NUMBER = "0800-123-456"
     
     # CORS
-    CORS_ORIGINS = os.environ.get('CORS_ORIGINS', 'http://localhost:3000').split(',')
+    CORS_ORIGINS = [origin.strip() for origin in os.environ.get('CORS_ORIGINS', 'http://localhost:3000').split(',') if origin.strip()]
     
     # Analytics
     SENTRY_DSN = os.environ.get('SENTRY_DSN', '')
