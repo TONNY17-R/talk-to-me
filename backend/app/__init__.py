@@ -34,9 +34,20 @@ def create_app(config_name='development'):
     """
     app = Flask(__name__)
     
-    # Load configuration
+    # Load configuration. Accept either a preset name ('development', 'production')
+    # or an explicit config object/class used by tests and other callers.
     from backend.config import config
-    app.config.from_object(config[config_name])
+
+    if isinstance(config_name, str):
+        config_obj = config.get(config_name)
+        if config_obj is None:
+            config_obj = config.get('default')
+        if config_obj is None:
+            config_obj = next((value for value in config.values() if value is not None), None)
+    else:
+        config_obj = config_name
+
+    app.config.from_object(config_obj)
     
     # Initialize extensions
     db.init_app(app)
